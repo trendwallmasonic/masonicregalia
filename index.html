@@ -1,0 +1,967 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TrendWall — Discover What's Trending</title>
+    <meta name="description" content="Discover trending topics, ideas, stories and insights with TrendWall.">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        :root {
+            --primary: #111827;
+            --accent: #4f46e5;
+            --accent-light: #eef2ff;
+            --text: #374151;
+            --muted: #6b7280;
+            --border: #e5e7eb;
+            --bg: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            color: var(--text);
+            background: #fff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* Navbar */
+        .navbar {
+            padding: 18px 0;
+            background: rgba(255,255,255,.95);
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .navbar-brand {
+            font-size: 25px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -1px;
+        }
+
+        .navbar-brand span {
+            color: var(--accent);
+        }
+
+        .nav-link {
+            color: #4b5563 !important;
+            font-size: 15px;
+            font-weight: 500;
+            margin: 0 7px;
+        }
+
+        .nav-link:hover {
+            color: var(--accent) !important;
+        }
+
+        .btn-primary-custom {
+            background: var(--primary);
+            color: #fff;
+            padding: 11px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            border: none;
+            transition: .2s ease;
+        }
+
+        .btn-primary-custom:hover {
+            background: var(--accent);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 105px 0 95px;
+            background:
+                radial-gradient(circle at 85% 20%, rgba(79,70,229,.08), transparent 28%),
+                linear-gradient(180deg, #fff 0%, #f8fafc 100%);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 13px;
+            background: var(--accent-light);
+            color: var(--accent);
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 68px);
+            line-height: 1.08;
+            font-weight: 800;
+            letter-spacing: -3px;
+            color: var(--primary);
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero-text {
+            max-width: 650px;
+            font-size: 19px;
+            color: var(--muted);
+            margin-bottom: 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-outline-custom {
+            padding: 11px 22px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            background: #fff;
+        }
+
+        .btn-outline-custom:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Hero Card */
+        .hero-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 18px;
+            box-shadow: 0 20px 50px rgba(15,23,42,.08);
+        }
+
+        .dashboard-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 15px;
+        }
+
+        .dots {
+            display: flex;
+            gap: 5px;
+        }
+
+        .dots i {
+            width: 8px;
+            height: 8px;
+            background: #d1d5db;
+            border-radius: 50%;
+            display: block;
+        }
+
+        .trend-item {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 13px 8px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .trend-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: var(--accent-light);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 19px;
+        }
+
+        .trend-item h6 {
+            margin: 0;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .trend-item small {
+            color: var(--muted);
+        }
+
+        /* Stats */
+        .stats {
+            padding: 25px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: #fff;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat h3 {
+            color: var(--primary);
+            font-size: 30px;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .stat p {
+            margin: 3px 0 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* Sections */
+        .section {
+            padding: 90px 0;
+        }
+
+        .section-light {
+            background: var(--bg);
+        }
+
+        .section-heading {
+            max-width: 680px;
+            margin: 0 auto 50px;
+            text-align: center;
+        }
+
+        .section-heading .eyebrow {
+            color: var(--accent);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 800;
+            margin-bottom: 9px;
+        }
+
+        .section-heading h2 {
+            color: var(--primary);
+            font-size: 38px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 14px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* Feature Cards */
+        .feature-card {
+            height: 100%;
+            padding: 30px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: #fff;
+            transition: .25s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(15,23,42,.07);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: var(--accent-light);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h4 {
+            font-size: 20px;
+            color: var(--primary);
+            font-weight: 750;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* Content */
+        .content-box {
+            padding: 45px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .content-box h3 {
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .content-box p {
+            color: var(--muted);
+        }
+
+        .check-list {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0 0;
+        }
+
+        .check-list li {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 13px;
+            color: #4b5563;
+        }
+
+        .check-list i {
+            color: var(--accent);
+            font-size: 19px;
+        }
+
+        /* Topics */
+        .topic-card {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 25px;
+            background: #fff;
+            height: 100%;
+        }
+
+        .topic-card i {
+            font-size: 26px;
+            color: var(--accent);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .topic-card h5 {
+            color: var(--primary);
+            font-weight: 750;
+        }
+
+        .topic-card p {
+            color: var(--muted);
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 75px 0;
+        }
+
+        .cta-box {
+            background: var(--primary);
+            border-radius: 18px;
+            padding: 60px 40px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .cta-box h2 {
+            font-size: 40px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 15px;
+        }
+
+        .cta-box p {
+            max-width: 600px;
+            margin: 0 auto 28px;
+            color: #cbd5e1;
+        }
+
+        .btn-white {
+            display: inline-block;
+            background: #fff;
+            color: var(--primary);
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        .btn-white:hover {
+            background: #f1f5f9;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            padding: 35px 0;
+            border-top: 1px solid var(--border);
+            background: #fff;
+        }
+
+        .footer-brand {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .footer-brand span {
+            color: var(--accent);
+        }
+
+        .footer-text {
+            color: var(--muted);
+            font-size: 14px;
+            margin: 8px 0 0;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            color: var(--muted);
+            margin-left: 6px;
+            transition: .2s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .hero {
+                padding: 75px 0;
+            }
+
+            .hero-card {
+                margin-top: 45px;
+            }
+
+            .navbar .btn-primary-custom {
+                margin-top: 10px;
+                display: inline-block;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .section {
+                padding: 65px 0;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .section-heading h2 {
+                font-size: 31px;
+            }
+
+            .content-box {
+                padding: 30px;
+            }
+
+            .cta-box {
+                padding: 45px 25px;
+            }
+
+            .cta-box h2 {
+                font-size: 31px;
+            }
+
+            .stat {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Trend<span>Wall</span></a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNav"
+                aria-controls="mainNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#features">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#topics">Topics</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item ms-lg-2">
+                    <a class="btn-primary-custom d-inline-block" href="#explore">
+                        Explore Now
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Hero -->
+<section class="hero" id="home">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-lg-6">
+                <div class="hero-badge">
+                    <i class="bi bi-stars"></i>
+                    Discover What's Trending
+                </div>
+
+                <h1>
+                    Ideas worth
+                    <span>discovering.</span>
+                </h1>
+
+                <p class="hero-text">
+                    Explore interesting topics, fresh ideas and useful insights
+                    in one simple place. Stay curious, stay informed and
+                    discover something new every day.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#explore" class="btn-primary-custom">
+                        Start Exploring
+                        <i class="bi bi-arrow-right ms-1"></i>
+                    </a>
+
+                    <a href="#about" class="btn-outline-custom">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="hero-card">
+
+                    <div class="dashboard-top">
+                        <strong>Trending Today</strong>
+
+                        <div class="dots">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+                    </div>
+
+                    <div class="trend-item">
+                        <div class="trend-icon">
+                            <i class="bi bi-lightbulb"></i>
+                        </div>
+                        <div>
+                            <h6>Ideas & Innovation</h6>
+                            <small>Fresh perspectives and creative thinking</small>
+                        </div>
+                    </div>
+
+                    <div class="trend-item">
+                        <div class="trend-icon">
+                            <i class="bi bi-globe2"></i>
+                        </div>
+                        <div>
+                            <h6>Culture & Society</h6>
+                            <small>Stories shaping the world around us</small>
+                        </div>
+                    </div>
+
+                    <div class="trend-item">
+                        <div class="trend-icon">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <div>
+                            <h6>Business & Trends</h6>
+                            <small>Insights into changing industries</small>
+                        </div>
+                    </div>
+
+                    <div class="trend-item border-0">
+                        <div class="trend-icon">
+                            <i class="bi bi-book"></i>
+                        </div>
+                        <div>
+                            <h6>Knowledge & Guides</h6>
+                            <small>Useful information made simple</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Stats -->
+<section class="stats">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-6 col-md-3">
+                <div class="stat">
+                    <h3>100+</h3>
+                    <p>Topics</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="stat">
+                    <h3>50K+</h3>
+                    <p>Readers</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="stat">
+                    <h3>25+</h3>
+                    <p>Categories</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="stat">
+                    <h3>24/7</h3>
+                    <p>Discovery</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Features -->
+<section class="section" id="features">
+    <div class="container">
+
+        <div class="section-heading">
+            <div class="eyebrow">Why TrendWall</div>
+            <h2>Simple. Useful. Interesting.</h2>
+            <p>
+                Everything is designed to make discovering quality information
+                easier and more enjoyable.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-search"></i>
+                    </div>
+                    <h4>Discover More</h4>
+                    <p>
+                        Find interesting subjects and explore topics that
+                        match your curiosity.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-lightning-charge"></i>
+                    </div>
+                    <h4>Stay Updated</h4>
+                    <p>
+                        Keep up with changing ideas, conversations and
+                        emerging trends.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-bookmark"></i>
+                    </div>
+                    <h4>Learn Something</h4>
+                    <p>
+                        Explore useful guides and informative content without
+                        unnecessary complexity.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- About -->
+<section class="section section-light" id="about">
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-6">
+                <div class="section-heading text-start mb-0">
+                    <div class="eyebrow">About Us</div>
+
+                    <h2>
+                        A place for curious minds.
+                    </h2>
+
+                    <p>
+                        TrendWall brings together interesting ideas, topics
+                        and information in a clean and easy-to-explore
+                        experience.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="content-box">
+
+                    <h3>Explore without the noise.</h3>
+
+                    <p>
+                        We believe finding useful information should be
+                        straightforward. Our goal is to make every visit
+                        valuable, whether you're looking for a quick answer
+                        or something new to explore.
+                    </p>
+
+                    <ul class="check-list">
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Easy-to-explore topics
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Clean and readable content
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Interesting ideas and insights
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Designed for curious readers
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Topics -->
+<section class="section" id="topics">
+    <div class="container">
+
+        <div class="section-heading">
+            <div class="eyebrow">Explore</div>
+            <h2>Something for every curiosity.</h2>
+            <p>
+                Browse different areas and find your next interesting topic.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-sm-6 col-lg-3">
+                <div class="topic-card">
+                    <i class="bi bi-cpu"></i>
+                    <h5>Technology</h5>
+                    <p>
+                        Discover technology, digital trends and modern ideas.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3">
+                <div class="topic-card">
+                    <i class="bi bi-briefcase"></i>
+                    <h5>Business</h5>
+                    <p>
+                        Explore business ideas, industries and changing trends.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3">
+                <div class="topic-card">
+                    <i class="bi bi-globe"></i>
+                    <h5>Culture</h5>
+                    <p>
+                        Learn about people, culture, society and traditions.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3">
+                <div class="topic-card">
+                    <i class="bi bi-journal-text"></i>
+                    <h5>Guides</h5>
+                    <p>
+                        Find simple guides, explanations and useful knowledge.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- CTA -->
+<section class="cta" id="explore">
+    <div class="container">
+
+        <div class="cta-box">
+            <h2>Ready to discover something new?</h2>
+
+            <p>
+                Explore TrendWall and find ideas, topics and information
+                worth your time.
+            </p>
+
+            <a href="#topics" class="btn-white">
+                Explore Topics
+                <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-md-6">
+                <div class="footer-brand">
+                    Trend<span>Wall</span>
+                </div>
+
+                <p class="footer-text">
+                    Discover ideas. Explore trends. Stay curious.
+                </p>
+            </div>
+
+            <div class="col-md-6 text-md-end mt-3 mt-md-0">
+
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+
+                    <a href="#" aria-label="Twitter">
+                        <i class="bi bi-twitter-x"></i>
+                    </a>
+
+                    <a href="#" aria-label="LinkedIn">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                </div>
+
+                <p class="footer-text mt-3">
+                    © <span id="year"></span> TrendWall. All rights reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Current year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+        link.addEventListener("click", function(e) {
+            const target = document.querySelector(this.getAttribute("href"));
+
+            if (target) {
+                e.preventDefault();
+
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+                // Close mobile navbar
+                const navbar = document.querySelector(".navbar-collapse");
+
+                if (navbar.classList.contains("show")) {
+                    const bsCollapse = bootstrap.Collapse.getInstance(navbar);
+                    if (bsCollapse) {
+                        bsCollapse.hide();
+                    }
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
+```
