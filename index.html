@@ -1,105 +1,144 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>TrendWall — Discover What's Trending</title>
-    <meta name="description" content="Discover trending topics, ideas, stories and insights with TrendWall.">
+    <title>TrendWall | Masonic Regalia, Crowns, Aprons & Resources</title>
 
-    <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="description"
+          content="Explore Masonic regalia, aprons, crowns, Fez caps, chain collars and useful Masonic resources with TrendWall.">
+
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="TrendWall">
+
+    <link rel="canonical" href="https://trendwall.shop/">
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
 
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <style>
+
         :root {
-            --primary: #111827;
-            --accent: #4f46e5;
-            --accent-light: #eef2ff;
+            --dark: #111827;
+            --dark-2: #1f2937;
+            --gold: #b58a3a;
+            --gold-light: #f8f1e3;
             --text: #374151;
             --muted: #6b7280;
             --border: #e5e7eb;
-            --bg: #f8fafc;
+            --light: #f8fafc;
+            --white: #ffffff;
         }
 
         * {
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
-            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             color: var(--text);
-            background: #fff;
-            line-height: 1.6;
+            background: var(--white);
+            line-height: 1.7;
         }
 
         a {
             text-decoration: none;
         }
 
-        /* Navbar */
+        /* ================= NAVBAR ================= */
+
         .navbar {
-            padding: 18px 0;
-            background: rgba(255,255,255,.95);
-            border-bottom: 1px solid #f0f0f0;
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
         }
 
-        .navbar-brand {
+        .brand {
             font-size: 25px;
             font-weight: 800;
-            color: var(--primary);
-            letter-spacing: -1px;
+            letter-spacing: -.5px;
+            color: var(--dark);
         }
 
-        .navbar-brand span {
-            color: var(--accent);
+        .brand span {
+            color: var(--gold);
         }
 
         .nav-link {
             color: #4b5563 !important;
             font-size: 15px;
-            font-weight: 500;
-            margin: 0 7px;
+            font-weight: 600;
+            margin-left: 14px;
         }
 
         .nav-link:hover {
-            color: var(--accent) !important;
+            color: var(--gold) !important;
         }
 
-        .btn-primary-custom {
-            background: var(--primary);
-            color: #fff;
-            padding: 11px 22px;
-            border-radius: 8px;
-            font-weight: 600;
-            border: none;
-            transition: .2s ease;
+        .nav-btn {
+            background: var(--dark);
+            color: #fff !important;
+            padding: 9px 18px !important;
+            border-radius: 6px;
         }
 
-        .btn-primary-custom:hover {
-            background: var(--accent);
-            color: #fff;
-            transform: translateY(-1px);
+        .nav-btn:hover {
+            background: var(--gold);
         }
 
-        /* Hero */
+        /* ================= HERO ================= */
+
         .hero {
-            padding: 105px 0 95px;
             background:
-                radial-gradient(circle at 85% 20%, rgba(79,70,229,.08), transparent 28%),
-                linear-gradient(180deg, #fff 0%, #f8fafc 100%);
+                linear-gradient(
+                    135deg,
+                    #111827 0%,
+                    #1f2937 60%,
+                    #293548 100%
+                );
+
+            color: #fff;
+            padding: 105px 0;
+            position: relative;
+            overflow: hidden;
         }
 
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 7px 13px;
-            background: var(--accent-light);
-            color: var(--accent);
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 50%;
+            right: -130px;
+            top: -130px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-label {
+            display: inline-block;
+            background: rgba(181,138,58,.14);
+            border: 1px solid rgba(181,138,58,.4);
+            color: #e4c77e;
+            padding: 6px 13px;
             border-radius: 30px;
             font-size: 13px;
             font-weight: 700;
@@ -107,23 +146,22 @@
         }
 
         .hero h1 {
-            font-size: clamp(42px, 6vw, 68px);
-            line-height: 1.08;
+            font-size: clamp(40px, 6vw, 64px);
+            line-height: 1.1;
             font-weight: 800;
-            letter-spacing: -3px;
-            color: var(--primary);
+            letter-spacing: -2px;
             margin-bottom: 22px;
         }
 
         .hero h1 span {
-            color: var(--accent);
+            color: #d4ae60;
         }
 
-        .hero-text {
+        .hero p {
             max-width: 650px;
-            font-size: 19px;
-            color: var(--muted);
-            margin-bottom: 32px;
+            color: #d1d5db;
+            font-size: 18px;
+            margin-bottom: 30px;
         }
 
         .hero-buttons {
@@ -132,136 +170,120 @@
             flex-wrap: wrap;
         }
 
-        .btn-outline-custom {
-            padding: 11px 22px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--primary);
-            font-weight: 600;
+        .btn-gold {
+            background: var(--gold);
+            color: #fff;
+            padding: 12px 23px;
+            border-radius: 6px;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .btn-gold:hover {
+            background: #9c742f;
+            color: #fff;
+        }
+
+        .btn-light-outline {
+            border: 1px solid rgba(255,255,255,.35);
+            color: #fff;
+            padding: 12px 23px;
+            border-radius: 6px;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .btn-light-outline:hover {
             background: #fff;
+            color: var(--dark);
         }
 
-        .btn-outline-custom:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
+        /* ================= HERO CARD ================= */
 
-        /* Hero Card */
         .hero-card {
             background: #fff;
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 18px;
-            box-shadow: 0 20px 50px rgba(15,23,42,.08);
+            border-radius: 12px;
+            padding: 28px;
+            color: var(--text);
+            box-shadow: 0 25px 60px rgba(0,0,0,.22);
+            position: relative;
+            z-index: 2;
         }
 
-        .dashboard-top {
+        .hero-card-title {
+            color: var(--dark);
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .mini-item {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding-bottom: 15px;
+            gap: 14px;
+            padding: 13px 0;
             border-bottom: 1px solid var(--border);
-            margin-bottom: 15px;
         }
 
-        .dots {
-            display: flex;
-            gap: 5px;
+        .mini-item:last-child {
+            border-bottom: 0;
         }
 
-        .dots i {
-            width: 8px;
-            height: 8px;
-            background: #d1d5db;
-            border-radius: 50%;
-            display: block;
-        }
-
-        .trend-item {
-            display: flex;
-            align-items: center;
-            gap: 13px;
-            padding: 13px 8px;
-            border-bottom: 1px solid #f1f5f9;
-        }
-
-        .trend-icon {
+        .mini-icon {
+            min-width: 42px;
             width: 42px;
             height: 42px;
-            border-radius: 10px;
-            background: var(--accent-light);
-            color: var(--accent);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 19px;
+            border-radius: 8px;
+            background: var(--gold-light);
+            color: var(--gold);
+            font-size: 20px;
         }
 
-        .trend-item h6 {
-            margin: 0;
-            font-weight: 700;
-            color: var(--primary);
+        .mini-item strong {
+            display: block;
+            color: var(--dark);
+            font-size: 15px;
         }
 
-        .trend-item small {
+        .mini-item small {
             color: var(--muted);
         }
 
-        /* Stats */
-        .stats {
-            padding: 25px 0;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            background: #fff;
-        }
+        /* ================= SECTIONS ================= */
 
-        .stat {
-            text-align: center;
-        }
-
-        .stat h3 {
-            color: var(--primary);
-            font-size: 30px;
-            font-weight: 800;
-            margin: 0;
-        }
-
-        .stat p {
-            margin: 3px 0 0;
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        /* Sections */
         .section {
-            padding: 90px 0;
+            padding: 85px 0;
         }
 
         .section-light {
-            background: var(--bg);
+            background: var(--light);
         }
 
         .section-heading {
-            max-width: 680px;
+            max-width: 720px;
             margin: 0 auto 50px;
             text-align: center;
         }
 
-        .section-heading .eyebrow {
-            color: var(--accent);
-            font-size: 13px;
+        .eyebrow {
+            color: var(--gold);
             text-transform: uppercase;
             letter-spacing: 1.5px;
+            font-size: 12px;
             font-weight: 800;
-            margin-bottom: 9px;
+            margin-bottom: 10px;
         }
 
         .section-heading h2 {
-            color: var(--primary);
+            color: var(--dark);
             font-size: 38px;
+            line-height: 1.2;
             font-weight: 800;
-            letter-spacing: -1.5px;
-            margin-bottom: 14px;
+            letter-spacing: -1px;
+            margin-bottom: 15px;
         }
 
         .section-heading p {
@@ -269,221 +291,375 @@
             margin: 0;
         }
 
-        /* Feature Cards */
-        .feature-card {
-            height: 100%;
-            padding: 30px;
-            border: 1px solid var(--border);
-            border-radius: 14px;
+        /* ================= ABOUT ================= */
+
+        .about-box {
             background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 38px;
+            height: 100%;
+        }
+
+        .about-box h3 {
+            color: var(--dark);
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .about-box p {
+            color: var(--muted);
+        }
+
+        .about-highlight {
+            background: var(--dark);
+            color: #fff;
+            border-radius: 12px;
+            padding: 38px;
+            height: 100%;
+        }
+
+        .about-highlight h3 {
+            font-size: 25px;
+            font-weight: 800;
+            margin-bottom: 18px;
+        }
+
+        .about-highlight p {
+            color: #d1d5db;
+        }
+
+        .check {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0;
+        }
+
+        .check li {
+            margin-bottom: 11px;
+        }
+
+        .check i {
+            color: #d4ae60;
+            margin-right: 8px;
+        }
+
+        /* ================= CATEGORY CARDS ================= */
+
+        .category-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px;
+            height: 100%;
             transition: .25s ease;
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(15,23,42,.07);
+        .category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(15,23,42,.08);
+            border-color: #d6c29d;
         }
 
-        .feature-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            background: var(--accent-light);
-            color: var(--accent);
+        .category-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 9px;
+            background: var(--gold-light);
+            color: var(--gold);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 22px;
-            margin-bottom: 20px;
+            font-size: 23px;
+            margin-bottom: 18px;
         }
 
-        .feature-card h4 {
+        .category-card h3 {
+            color: var(--dark);
             font-size: 20px;
-            color: var(--primary);
-            font-weight: 750;
+            font-weight: 800;
             margin-bottom: 10px;
         }
 
-        .feature-card p {
+        .category-card p {
             color: var(--muted);
-            margin: 0;
-        }
-
-        /* Content */
-        .content-box {
-            padding: 45px;
-            background: #fff;
-            border: 1px solid var(--border);
-            border-radius: 16px;
-        }
-
-        .content-box h3 {
-            color: var(--primary);
-            font-weight: 800;
-            margin-bottom: 15px;
-        }
-
-        .content-box p {
-            color: var(--muted);
-        }
-
-        .check-list {
-            list-style: none;
-            padding: 0;
-            margin: 25px 0 0;
-        }
-
-        .check-list li {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 13px;
-            color: #4b5563;
-        }
-
-        .check-list i {
-            color: var(--accent);
-            font-size: 19px;
-        }
-
-        /* Topics */
-        .topic-card {
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 25px;
-            background: #fff;
-            height: 100%;
-        }
-
-        .topic-card i {
-            font-size: 26px;
-            color: var(--accent);
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .topic-card h5 {
-            color: var(--primary);
-            font-weight: 750;
-        }
-
-        .topic-card p {
-            color: var(--muted);
-            margin: 0;
             font-size: 14px;
+            margin-bottom: 18px;
         }
 
-        /* CTA */
-        .cta {
-            padding: 75px 0;
-        }
-
-        .cta-box {
-            background: var(--primary);
-            border-radius: 18px;
-            padding: 60px 40px;
-            text-align: center;
-            color: #fff;
-        }
-
-        .cta-box h2 {
-            font-size: 40px;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 15px;
-        }
-
-        .cta-box p {
-            max-width: 600px;
-            margin: 0 auto 28px;
-            color: #cbd5e1;
-        }
-
-        .btn-white {
-            display: inline-block;
-            background: #fff;
-            color: var(--primary);
-            padding: 12px 25px;
-            border-radius: 8px;
+        .category-link {
+            color: var(--gold);
+            font-size: 14px;
             font-weight: 700;
         }
 
-        .btn-white:hover {
-            background: #f1f5f9;
-            color: var(--primary);
+        .category-link:hover {
+            color: var(--dark);
         }
 
-        /* Footer */
-        footer {
-            padding: 35px 0;
+        /* ================= REGALIA ================= */
+
+        .info-card {
+            border: 1px solid var(--border);
+            background: #fff;
+            border-radius: 10px;
+            padding: 32px;
+            height: 100%;
+        }
+
+        .info-number {
+            font-size: 32px;
+            font-weight: 800;
+            color: #d6c29d;
+            margin-bottom: 8px;
+        }
+
+        .info-card h3 {
+            color: var(--dark);
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .info-card p {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        /* ================= RESOURCE / BACKLINK SECTION ================= */
+
+        .resources-section {
+            background: #f8fafc;
             border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .resource-intro {
+            max-width: 760px;
+            margin: 0 auto 42px;
+            text-align: center;
+        }
+
+        .resource-intro h2 {
+            color: var(--dark);
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .resource-intro p {
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .resource-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 26px;
+            height: 100%;
+            transition: .25s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(15,23,42,.07);
+        }
+
+        .resource-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .resource-icon {
+            min-width: 44px;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9px;
+            background: var(--gold-light);
+            color: var(--gold);
+            font-size: 19px;
+        }
+
+        .resource-card h3 {
+            color: var(--dark);
+            font-size: 18px;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .resource-card p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .resource-card a.resource-link {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 14px;
+            word-break: break-word;
+        }
+
+        .resource-card a.resource-link:hover {
+            color: var(--dark);
+        }
+
+        .resource-note {
+            background: var(--gold-light);
+            border: 1px solid #eadfc9;
+            border-radius: 10px;
+            padding: 17px 20px;
+            color: #5f5137;
+            font-size: 14px;
+            margin-top: 35px;
+        }
+
+        .resource-note i {
+            margin-right: 7px;
+        }
+
+        /* ================= ADD LINK TEMPLATE ================= */
+
+        .add-resource {
+            background: #fff;
+            border: 1px dashed #cfc4ae;
+            border-radius: 12px;
+            padding: 28px;
+            margin-top: 40px;
+        }
+
+        .add-resource h3 {
+            color: var(--dark);
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .add-resource p {
+            color: var(--muted);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .code-example {
+            margin-top: 18px;
+            background: #111827;
+            color: #e5e7eb;
+            border-radius: 8px;
+            padding: 18px;
+            overflow-x: auto;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* ================= CTA ================= */
+
+        .cta {
+            padding: 80px 0;
+        }
+
+        .cta-box {
+            background: var(--dark);
+            border-radius: 14px;
+            padding: 65px 40px;
+            text-align: center;
+        }
+
+        .cta-box h2 {
+            color: #fff;
+            font-size: 40px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 14px;
+        }
+
+        .cta-box p {
+            color: #cbd5e1;
+            max-width: 650px;
+            margin: 0 auto 27px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 35px 0;
             background: #fff;
         }
 
         .footer-brand {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 800;
-            color: var(--primary);
+            color: var(--dark);
         }
 
         .footer-brand span {
-            color: var(--accent);
+            color: var(--gold);
         }
 
         .footer-text {
             color: var(--muted);
             font-size: 14px;
-            margin: 8px 0 0;
+            margin: 5px 0 0;
         }
 
-        .social-links a {
-            width: 36px;
-            height: 36px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--border);
-            border-radius: 50%;
+        .footer-links a {
             color: var(--muted);
-            margin-left: 6px;
-            transition: .2s;
+            font-size: 14px;
+            margin-left: 16px;
         }
 
-        .social-links a:hover {
-            color: var(--accent);
-            border-color: var(--accent);
+        .footer-links a:hover {
+            color: var(--gold);
         }
 
-        /* Responsive */
+        /* ================= RESPONSIVE ================= */
+
         @media (max-width: 991px) {
+
             .hero {
                 padding: 75px 0;
             }
 
             .hero-card {
-                margin-top: 45px;
+                margin-top: 40px;
             }
 
-            .navbar .btn-primary-custom {
-                margin-top: 10px;
-                display: inline-block;
+            .nav-link {
+                margin-left: 0;
+                margin-top: 8px;
             }
+
         }
 
         @media (max-width: 767px) {
+
             .section {
                 padding: 65px 0;
             }
 
-            .hero h1 {
-                letter-spacing: -2px;
-            }
-
-            .section-heading h2 {
+            .section-heading h2,
+            .resource-intro h2 {
                 font-size: 31px;
             }
 
-            .content-box {
-                padding: 30px;
+            .hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .about-box,
+            .about-highlight {
+                padding: 28px;
             }
 
             .cta-box {
@@ -494,429 +670,1289 @@
                 font-size: 31px;
             }
 
-            .stat {
-                margin: 10px 0;
+            .footer-links {
+                margin-top: 15px;
             }
+
+            .footer-links a {
+                margin-left: 0;
+                margin-right: 14px;
+            }
+
         }
+
     </style>
 </head>
 
 <body>
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg sticky-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">Trend<span>Wall</span></a>
 
-        <button class="navbar-toggler" type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#mainNav"
-                aria-controls="mainNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation">
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<nav class="navbar navbar-expand-lg sticky-top">
+
+    <div class="container">
+
+        <a class="brand" href="https://trendwall.shop/">
+            Trend<span>Wall</span>
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainMenu"
+            aria-controls="mainMenu"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+
             <span class="navbar-toggler-icon"></span>
+
         </button>
 
-        <div class="collapse navbar-collapse" id="mainNav">
+        <div class="collapse navbar-collapse" id="mainMenu">
+
             <ul class="navbar-nav ms-auto align-items-lg-center">
+
                 <li class="nav-item">
-                    <a class="nav-link" href="#home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#features">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#topics">Topics</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#about">About</a>
-                </li>
-                <li class="nav-item ms-lg-2">
-                    <a class="btn-primary-custom d-inline-block" href="#explore">
-                        Explore Now
+                    <a class="nav-link" href="#about">
+                        About
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#regalia">
+                        Regalia
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#categories">
+                        Categories
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#resources">
+                        Resources
+                    </a>
+                </li>
+
+                <li class="nav-item ms-lg-2">
+                    <a
+                        class="nav-link nav-btn"
+                        href="https://trendwall.shop/"
+                        target="_blank"
+                        rel="noopener">
+                        Visit TrendWall
+                    </a>
+                </li>
+
             </ul>
+
         </div>
+
     </div>
+
 </nav>
 
 
-<!-- Hero -->
-<section class="hero" id="home">
-    <div class="container">
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="container hero-content">
+
         <div class="row align-items-center">
 
-            <div class="col-lg-6">
-                <div class="hero-badge">
-                    <i class="bi bi-stars"></i>
-                    Discover What's Trending
+            <div class="col-lg-7">
+
+                <div class="hero-label">
+                    Masonic Regalia & Accessories
                 </div>
 
                 <h1>
-                    Ideas worth
-                    <span>discovering.</span>
+                    Masonic Regalia
+                    <span>Crafted for Tradition.</span>
                 </h1>
 
-                <p class="hero-text">
-                    Explore interesting topics, fresh ideas and useful insights
-                    in one simple place. Stay curious, stay informed and
-                    discover something new every day.
+                <p>
+                    TrendWall is an online destination for Masonic regalia,
+                    ceremonial accessories and related products. Explore
+                    aprons, crowns, Fez caps, chain collars, sashes and
+                    other Masonic essentials.
                 </p>
 
                 <div class="hero-buttons">
-                    <a href="#explore" class="btn-primary-custom">
-                        Start Exploring
+
+                    <a
+                        href="https://trendwall.shop/"
+                        class="btn-gold"
+                        target="_blank"
+                        rel="noopener">
+
+                        Explore TrendWall
                         <i class="bi bi-arrow-right ms-1"></i>
+
                     </a>
 
-                    <a href="#about" class="btn-outline-custom">
-                        Learn More
+                    <a
+                        href="#resources"
+                        class="btn-light-outline">
+
+                        Useful Resources
+
                     </a>
+
                 </div>
+
             </div>
 
-            <div class="col-lg-6">
+
+            <div class="col-lg-5">
+
                 <div class="hero-card">
 
-                    <div class="dashboard-top">
-                        <strong>Trending Today</strong>
-
-                        <div class="dots">
-                            <i></i>
-                            <i></i>
-                            <i></i>
-                        </div>
+                    <div class="hero-card-title">
+                        Explore Masonic Collections
                     </div>
 
-                    <div class="trend-item">
-                        <div class="trend-icon">
-                            <i class="bi bi-lightbulb"></i>
+                    <div class="mini-item">
+
+                        <div class="mini-icon">
+                            <i class="bi bi-award"></i>
                         </div>
+
                         <div>
-                            <h6>Ideas & Innovation</h6>
-                            <small>Fresh perspectives and creative thinking</small>
+                            <strong>Masonic Crowns</strong>
+                            <small>
+                                Traditional ceremonial headwear
+                            </small>
                         </div>
+
                     </div>
 
-                    <div class="trend-item">
-                        <div class="trend-icon">
-                            <i class="bi bi-globe2"></i>
+                    <div class="mini-item">
+
+                        <div class="mini-icon">
+                            <i class="bi bi-shield-check"></i>
                         </div>
+
                         <div>
-                            <h6>Culture & Society</h6>
-                            <small>Stories shaping the world around us</small>
+                            <strong>Masonic Aprons</strong>
+                            <small>
+                                Regalia for different degrees and roles
+                            </small>
                         </div>
+
                     </div>
 
-                    <div class="trend-item">
-                        <div class="trend-icon">
-                            <i class="bi bi-graph-up-arrow"></i>
+                    <div class="mini-item">
+
+                        <div class="mini-icon">
+                            <i class="bi bi-person-badge"></i>
                         </div>
+
                         <div>
-                            <h6>Business & Trends</h6>
-                            <small>Insights into changing industries</small>
+                            <strong>Fez & Caps</strong>
+                            <small>
+                                Multiple styles and collections
+                            </small>
                         </div>
+
                     </div>
 
-                    <div class="trend-item border-0">
-                        <div class="trend-icon">
-                            <i class="bi bi-book"></i>
+                    <div class="mini-item">
+
+                        <div class="mini-icon">
+                            <i class="bi bi-gem"></i>
                         </div>
+
                         <div>
-                            <h6>Knowledge & Guides</h6>
-                            <small>Useful information made simple</small>
+                            <strong>Collars & Accessories</strong>
+                            <small>
+                                Complete ceremonial regalia
+                            </small>
                         </div>
+
                     </div>
 
                 </div>
+
             </div>
 
         </div>
+
     </div>
+
 </section>
 
 
-<!-- Stats -->
-<section class="stats">
-    <div class="container">
-        <div class="row">
+<!-- =====================================================
+     ABOUT
+===================================================== -->
 
-            <div class="col-6 col-md-3">
-                <div class="stat">
-                    <h3>100+</h3>
-                    <p>Topics</p>
-                </div>
-            </div>
+<section class="section" id="about">
 
-            <div class="col-6 col-md-3">
-                <div class="stat">
-                    <h3>50K+</h3>
-                    <p>Readers</p>
-                </div>
-            </div>
-
-            <div class="col-6 col-md-3">
-                <div class="stat">
-                    <h3>25+</h3>
-                    <p>Categories</p>
-                </div>
-            </div>
-
-            <div class="col-6 col-md-3">
-                <div class="stat">
-                    <h3>24/7</h3>
-                    <p>Discovery</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-<!-- Features -->
-<section class="section" id="features">
     <div class="container">
 
         <div class="section-heading">
-            <div class="eyebrow">Why TrendWall</div>
-            <h2>Simple. Useful. Interesting.</h2>
+
+            <div class="eyebrow">
+                About TrendWall
+            </div>
+
+            <h2>
+                A Dedicated Destination for Masonic Regalia
+            </h2>
+
             <p>
-                Everything is designed to make discovering quality information
-                easier and more enjoyable.
+                Explore ceremonial apparel and accessories associated with
+                Masonic traditions, degrees, offices and organizations.
             </p>
+
         </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-lg-7">
+
+                <div class="about-box">
+
+                    <h3>
+                        Bringing Masonic Regalia Together
+                    </h3>
+
+                    <p>
+                        TrendWall provides an online collection of Masonic
+                        products for members, officers, lodges and
+                        organizations looking for ceremonial apparel and
+                        accessories.
+                    </p>
+
+                    <p>
+                        The store includes a broad selection of products
+                        ranging from Masonic aprons and crowns to Fez caps,
+                        chain collars, sashes, cases, gloves, flags and
+                        other accessories.
+                    </p>
+
+                    <p class="mb-0">
+                        The goal is to make it easier to explore different
+                        categories of regalia in one convenient online
+                        destination.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-5">
+
+                <div class="about-highlight">
+
+                    <h3>
+                        Tradition Meets Craftsmanship
+                    </h3>
+
+                    <p>
+                        Masonic regalia is associated with ceremony,
+                        identity and tradition. Different pieces can form
+                        part of a complete ceremonial ensemble.
+                    </p>
+
+                    <ul class="check">
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Masonic Aprons
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Crowns, Fez & Caps
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Chain Collars & Jewels
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Sashes, Gloves & Banners
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     REGALIA
+===================================================== -->
+
+<section class="section section-light" id="regalia">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="eyebrow">
+                Masonic Regalia
+            </div>
+
+            <h2>
+                Explore the World of Masonic Regalia
+            </h2>
+
+            <p>
+                From recognizable aprons to ceremonial crowns and
+                accessories, explore different elements of Masonic regalia.
+            </p>
+
+        </div>
+
 
         <div class="row g-4">
 
             <div class="col-md-4">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="bi bi-search"></i>
+
+                <div class="info-card">
+
+                    <div class="info-number">
+                        01
                     </div>
-                    <h4>Discover More</h4>
+
+                    <h3>
+                        Masonic Aprons
+                    </h3>
+
                     <p>
-                        Find interesting subjects and explore topics that
-                        match your curiosity.
+                        Masonic aprons are among the most recognizable
+                        elements of Masonic regalia. Explore collections
+                        covering different rites, degrees, roles and styles.
                     </p>
+
+                    <a
+                        href="https://trendwall.shop/category/masonic-aprons"
+                        target="_blank"
+                        rel="noopener"
+                        class="category-link">
+
+                        Explore Aprons →
+
+                    </a>
+
                 </div>
+
             </div>
 
-            <div class="col-md-4">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="bi bi-lightning-charge"></i>
-                    </div>
-                    <h4>Stay Updated</h4>
-                    <p>
-                        Keep up with changing ideas, conversations and
-                        emerging trends.
-                    </p>
-                </div>
-            </div>
 
             <div class="col-md-4">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="bi bi-bookmark"></i>
+
+                <div class="info-card">
+
+                    <div class="info-number">
+                        02
                     </div>
-                    <h4>Learn Something</h4>
+
+                    <h3>
+                        Masonic Crowns
+                    </h3>
+
                     <p>
-                        Explore useful guides and informative content without
-                        unnecessary complexity.
+                        Crowns and ceremonial headwear form another part
+                        of the wider regalia collection, with options
+                        associated with different organizations.
                     </p>
+
+                    <a
+                        href="https://trendwall.shop/category/masonic-crowns"
+                        target="_blank"
+                        rel="noopener"
+                        class="category-link">
+
+                        Explore Crowns →
+
+                    </a>
+
                 </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <div class="info-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Fez & Caps
+                    </h3>
+
+                    <p>
+                        Explore different Fez and cap collections,
+                        including styles associated with Shriners,
+                        OES, York Rite and other organizations.
+                    </p>
+
+                    <a
+                        href="https://trendwall.shop/category/fez-and-caps"
+                        target="_blank"
+                        rel="noopener"
+                        class="category-link">
+
+                        Explore Fez & Caps →
+
+                    </a>
+
+                </div>
+
             </div>
 
         </div>
+
     </div>
+
 </section>
 
 
-<!-- About -->
-<section class="section section-light" id="about">
+<!-- =====================================================
+     CATEGORIES
+===================================================== -->
+
+<section class="section" id="categories">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="eyebrow">
+                Shop Categories
+            </div>
+
+            <h2>
+                Find the Regalia You Need
+            </h2>
+
+            <p>
+                Explore different TrendWall collections by product category.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="category-card">
+
+                    <div class="category-icon">
+                        <i class="bi bi-shield"></i>
+                    </div>
+
+                    <h3>
+                        Masonic Aprons
+                    </h3>
+
+                    <p>
+                        Explore Blue Lodge, Scottish Rite, Royal Arch,
+                        Master Mason, Council and other apron collections.
+                    </p>
+
+                    <a
+                        href="https://trendwall.shop/category/masonic-aprons"
+                        target="_blank"
+                        rel="noopener"
+                        class="category-link">
+
+                        View Collection →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="category-card">
+
+                    <div class="category-icon">
+                        <i class="bi bi-award"></i>
+                    </div>
+
+                    <h3>
+                        Masonic Crowns
+                    </h3>
+
+                    <p>
+                        Discover OES, Amaranth, HOJ, LOCOP, Shriners,
+                        Knight Templar and other crown collections.
+                    </p>
+
+                    <a
+                        href="https://trendwall.shop/category/masonic-crowns"
+                        target="_blank"
+                        rel="noopener"
+                        class="category-link">
+
+                        View Crowns →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="category-card">
+
+                    <div class="category-icon">
+                        <i class="bi bi-person-badge"></i>
+                    </div>
+
+                    <h3>
+                        Fez & Caps
+                    </h3>
+
+                    <p>
+                        Browse Fez hats, crown caps, OES Fez,
+                        Shriners Fez and other ceremonial headwear.
+                    </p>
+
+                    <a
+                        href="https://trendwall.shop/category/fez-and-caps"
+                        target="_blank"
+                        rel="noopener"
+                        class="category-link">
+
+                        View Fez & Caps →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="category-card">
+
+                    <div class="category-icon">
+                        <i class="bi bi-gem"></i>
+                    </div>
+
+                    <h3>
+                        Chain Collars
+                    </h3>
+
+                    <p>
+                        Explore collars, jewels and related collections
+                        for different Masonic organizations and degrees.
+                    </p>
+
+                    <a
+                        href="https://trendwall.shop/"
+                        target="_blank"
+                        rel="noopener"
+                        class="category-link">
+
+                        View Collection →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="category-card">
+
+                    <div class="category-icon">
+                        <i class="bi bi-rulers"></i>
+                    </div>
+
+                    <h3>
+                        Sashes & Banners
+                    </h3>
+
+                    <p>
+                        Discover Masonic sashes, custom sashes,
+                        banners, flags and ceremonial accessories.
+                    </p>
+
+                    <a
+                        href="https://trendwall.shop/"
+                        target="_blank"
+                        rel="noopener"
+                        class="category-link">
+
+                        Explore Collection →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="category-card">
+
+                    <div class="category-icon">
+                        <i class="bi bi-briefcase"></i>
+                    </div>
+
+                    <h3>
+                        Masonic Cases
+                    </h3>
+
+                    <p>
+                        Explore cases and accessories designed to help
+                        protect and organize ceremonial regalia.
+                    </p>
+
+                    <a
+                        href="https://trendwall.shop/"
+                        target="_blank"
+                        rel="noopener"
+                        class="category-link">
+
+                        Explore TrendWall →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     EDUCATIONAL SECTION
+===================================================== -->
+
+<section class="section section-light">
+
     <div class="container">
 
         <div class="row align-items-center g-5">
 
             <div class="col-lg-6">
-                <div class="section-heading text-start mb-0">
-                    <div class="eyebrow">About Us</div>
 
-                    <h2>
-                        A place for curious minds.
-                    </h2>
-
-                    <p>
-                        TrendWall brings together interesting ideas, topics
-                        and information in a clean and easy-to-explore
-                        experience.
-                    </p>
+                <div class="eyebrow">
+                    Understanding Masonic Regalia
                 </div>
+
+                <h2
+                    style="
+                    font-size:38px;
+                    font-weight:800;
+                    color:#111827;
+                    line-height:1.2;
+                    margin-bottom:18px;">
+
+                    More Than Ceremonial Clothing
+
+                </h2>
+
+                <p style="color:#6b7280;">
+
+                    Masonic regalia includes a variety of garments and
+                    accessories associated with ceremonies, offices,
+                    degrees and organizations.
+
+                </p>
+
+                <p style="color:#6b7280;">
+
+                    Aprons, collars, sashes, crowns, Fez caps and other
+                    pieces can each form part of a particular ceremonial
+                    ensemble.
+
+                </p>
+
+                <a
+                    href="https://trendwall.shop/"
+                    target="_blank"
+                    rel="noopener"
+                    class="category-link">
+
+                    Learn More About Masonic Regalia →
+
+                </a>
+
             </div>
 
+
             <div class="col-lg-6">
-                <div class="content-box">
 
-                    <h3>Explore without the noise.</h3>
+                <div class="about-box">
 
-                    <p>
-                        We believe finding useful information should be
-                        straightforward. Our goal is to make every visit
-                        valuable, whether you're looking for a quick answer
-                        or something new to explore.
-                    </p>
+                    <h3>
+                        Popular Regalia Categories
+                    </h3>
 
-                    <ul class="check-list">
+                    <ul class="check"
+                        style="color:#374151;">
+
                         <li>
                             <i class="bi bi-check-circle-fill"></i>
-                            Easy-to-explore topics
+                            Blue Lodge Aprons
                         </li>
 
                         <li>
                             <i class="bi bi-check-circle-fill"></i>
-                            Clean and readable content
+                            Scottish Rite Aprons
                         </li>
 
                         <li>
                             <i class="bi bi-check-circle-fill"></i>
-                            Interesting ideas and insights
+                            Royal Arch Regalia
                         </li>
 
                         <li>
                             <i class="bi bi-check-circle-fill"></i>
-                            Designed for curious readers
+                            OES Crowns & Fez
                         </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Chain Collars & Jewels
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Sashes & Masonic Banners
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Masonic Cases & Accessories
+                        </li>
+
                     </ul>
 
                 </div>
+
             </div>
 
         </div>
+
     </div>
+
 </section>
 
 
-<!-- Topics -->
-<section class="section" id="topics">
+<!-- =====================================================
+     PUBLIC RESOURCE / BACKLINK SECTION
+     
+     ADD YOUR LINKS HERE
+===================================================== -->
+
+<section class="section resources-section" id="resources">
+
     <div class="container">
 
-        <div class="section-heading">
-            <div class="eyebrow">Explore</div>
-            <h2>Something for every curiosity.</h2>
+        <div class="resource-intro">
+
+            <div class="eyebrow">
+                Useful Resources
+            </div>
+
+            <h2>
+                Masonic Resources & Recommended Websites
+            </h2>
+
             <p>
-                Browse different areas and find your next interesting topic.
+                Explore useful websites, guides and online resources
+                related to Masonic history, organizations, regalia,
+                traditions and related subjects.
             </p>
+
         </div>
+
 
         <div class="row g-4">
 
-            <div class="col-sm-6 col-lg-3">
-                <div class="topic-card">
-                    <i class="bi bi-cpu"></i>
-                    <h5>Technology</h5>
+
+            <!-- =================================================
+                 RESOURCE LINK #1
+            ================================================== -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="resource-card">
+
+                    <div class="resource-top">
+
+                        <div class="resource-icon">
+                            <i class="bi bi-globe2"></i>
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Masonic Regalia
+                            </h3>
+
+                        </div>
+
+                    </div>
+
                     <p>
-                        Discover technology, digital trends and modern ideas.
+                        Explore Masonic regalia, ceremonial apparel,
+                        crowns, aprons and related accessories.
                     </p>
+
+                    <a
+                        class="resource-link"
+                        href="https://trendwall.shop/"
+                        target="_blank"
+                        rel="noopener">
+
+                        Visit Website →
+
+                    </a>
+
                 </div>
+
             </div>
 
-            <div class="col-sm-6 col-lg-3">
-                <div class="topic-card">
-                    <i class="bi bi-briefcase"></i>
-                    <h5>Business</h5>
+
+            <!-- =================================================
+                 RESOURCE LINK #2
+                 REPLACE THIS LINK WITH YOUR BACKLINK
+            ================================================== -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="resource-card">
+
+                    <div class="resource-top">
+
+                        <div class="resource-icon">
+                            <i class="bi bi-book"></i>
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Masonic Guide
+                            </h3>
+
+                        </div>
+
+                    </div>
+
                     <p>
-                        Explore business ideas, industries and changing trends.
+                        A useful resource for readers interested in
+                        Masonic history, traditions and educational topics.
                     </p>
+
+                    <a
+                        class="resource-link"
+                        href="https://example.com/"
+                        target="_blank"
+                        rel="noopener">
+
+                        Visit Resource →
+
+                    </a>
+
                 </div>
+
             </div>
 
-            <div class="col-sm-6 col-lg-3">
-                <div class="topic-card">
-                    <i class="bi bi-globe"></i>
-                    <h5>Culture</h5>
+
+            <!-- =================================================
+                 RESOURCE LINK #3
+                 REPLACE THIS LINK WITH YOUR BACKLINK
+            ================================================== -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="resource-card">
+
+                    <div class="resource-top">
+
+                        <div class="resource-icon">
+                            <i class="bi bi-journal-text"></i>
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Masonic Information
+                            </h3>
+
+                        </div>
+
+                    </div>
+
                     <p>
-                        Learn about people, culture, society and traditions.
+                        Discover additional information and educational
+                        resources related to Masonic organizations.
                     </p>
+
+                    <a
+                        class="resource-link"
+                        href="https://example.com/"
+                        target="_blank"
+                        rel="noopener">
+
+                        Explore Resource →
+
+                    </a>
+
                 </div>
+
             </div>
 
-            <div class="col-sm-6 col-lg-3">
-                <div class="topic-card">
-                    <i class="bi bi-journal-text"></i>
-                    <h5>Guides</h5>
+
+            <!-- =================================================
+                 RESOURCE LINK #4
+                 REPLACE THIS LINK WITH YOUR BACKLINK
+            ================================================== -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="resource-card">
+
+                    <div class="resource-top">
+
+                        <div class="resource-icon">
+                            <i class="bi bi-archive"></i>
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Masonic History
+                            </h3>
+
+                        </div>
+
+                    </div>
+
                     <p>
-                        Find simple guides, explanations and useful knowledge.
+                        Browse historical information, articles and
+                        educational material about Masonic traditions.
                     </p>
+
+                    <a
+                        class="resource-link"
+                        href="https://example.com/"
+                        target="_blank"
+                        rel="noopener">
+
+                        Read More →
+
+                    </a>
+
                 </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 RESOURCE LINK #5
+                 REPLACE THIS LINK WITH YOUR BACKLINK
+            ================================================== -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="resource-card">
+
+                    <div class="resource-top">
+
+                        <div class="resource-icon">
+                            <i class="bi bi-people"></i>
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Masonic Organizations
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                    <p>
+                        Find additional resources covering Masonic
+                        organizations, lodges and related subjects.
+                    </p>
+
+                    <a
+                        class="resource-link"
+                        href="https://example.com/"
+                        target="_blank"
+                        rel="noopener">
+
+                        Visit Resource →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 RESOURCE LINK #6
+                 REPLACE THIS LINK WITH YOUR BACKLINK
+            ================================================== -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="resource-card">
+
+                    <div class="resource-top">
+
+                        <div class="resource-icon">
+                            <i class="bi bi-link-45deg"></i>
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Recommended Resource
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                    <p>
+                        A useful external resource selected for readers
+                        who want to explore related information.
+                    </p>
+
+                    <a
+                        class="resource-link"
+                        href="https://example.com/"
+                        target="_blank"
+                        rel="noopener">
+
+                        Explore Website →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             RESOURCE NOTE
+        ================================================== -->
+
+        <div class="resource-note">
+
+            <i class="bi bi-info-circle-fill"></i>
+
+            This resource directory is intended for useful,
+            relevant websites and educational resources. Links should
+            provide genuine value to visitors.
+
+        </div>
+
+
+        <!-- =================================================
+             EASY ADD LINK AREA
+        ================================================= -->
+
+        <div class="add-resource">
+
+            <h3>
+                Add Another Resource
+            </h3>
+
+            <p>
+                To add another backlink, copy one resource card above
+                and change the title, description and URL.
+            </p>
+
+            <div class="code-example">
+
+                &lt;div class="col-md-6 col-lg-4"&gt;<br>
+                &nbsp;&nbsp;&lt;div class="resource-card"&gt;<br><br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="resource-top"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="resource-icon"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i class="bi bi-link-45deg"&gt;&lt;/i&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br><br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;Your Website Title&lt;/h3&gt;<br><br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Short useful description of the resource.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;<br><br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;a<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class="resource-link"<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;href="https://yourwebsite.com/"<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;target="_blank"<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rel="noopener"&gt;<br><br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Visit Website →<br><br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br><br>
+
+                &nbsp;&nbsp;&lt;/div&gt;<br>
+                &lt;/div&gt;
+
             </div>
 
         </div>
+
     </div>
+
 </section>
 
 
-<!-- CTA -->
-<section class="cta" id="explore">
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="cta">
+
     <div class="container">
 
         <div class="cta-box">
-            <h2>Ready to discover something new?</h2>
+
+            <div class="eyebrow">
+                Explore Online
+            </div>
+
+            <h2>
+                Discover TrendWall Masonic Regalia
+            </h2>
 
             <p>
-                Explore TrendWall and find ideas, topics and information
-                worth your time.
+                Browse Masonic aprons, crowns, Fez caps, collars,
+                sashes and ceremonial accessories through TrendWall.
             </p>
 
-            <a href="#topics" class="btn-white">
-                Explore Topics
-                <i class="bi bi-arrow-right ms-1"></i>
+            <a
+                href="https://trendwall.shop/"
+                target="_blank"
+                rel="noopener"
+                class="btn-gold">
+
+                Visit TrendWall
+                <i class="bi bi-arrow-up-right ms-1"></i>
+
             </a>
+
         </div>
 
     </div>
+
 </section>
 
 
-<!-- Footer -->
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer>
+
     <div class="container">
 
         <div class="row align-items-center">
 
             <div class="col-md-6">
-                <div class="footer-brand">
+
+                <a
+                    href="https://trendwall.shop/"
+                    class="footer-brand">
+
                     Trend<span>Wall</span>
-                </div>
+
+                </a>
 
                 <p class="footer-text">
-                    Discover ideas. Explore trends. Stay curious.
+                    Masonic regalia, ceremonial apparel and accessories.
                 </p>
+
             </div>
 
-            <div class="col-md-6 text-md-end mt-3 mt-md-0">
 
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook">
-                        <i class="bi bi-facebook"></i>
+            <div class="col-md-6 text-md-end">
+
+                <div class="footer-links">
+
+                    <a href="#about">
+                        About
                     </a>
 
-                    <a href="#" aria-label="Instagram">
-                        <i class="bi bi-instagram"></i>
+                    <a href="#regalia">
+                        Regalia
                     </a>
 
-                    <a href="#" aria-label="Twitter">
-                        <i class="bi bi-twitter-x"></i>
+                    <a href="#categories">
+                        Categories
                     </a>
 
-                    <a href="#" aria-label="LinkedIn">
-                        <i class="bi bi-linkedin"></i>
+                    <a href="#resources">
+                        Resources
                     </a>
+
+                    <a
+                        href="https://trendwall.shop/"
+                        target="_blank"
+                        rel="noopener">
+
+                        Official Website
+
+                    </a>
+
                 </div>
 
-                <p class="footer-text mt-3">
-                    © <span id="year"></span> TrendWall. All rights reserved.
+                <p class="footer-text mt-2">
+                    © <span id="year"></span>
+                    TrendWall. All rights reserved.
                 </p>
 
             </div>
@@ -924,42 +1960,26 @@
         </div>
 
     </div>
+
 </footer>
 
 
 <!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+<!-- Current Year -->
 
 <script>
-    // Current year
-    document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-        link.addEventListener("click", function(e) {
-            const target = document.querySelector(this.getAttribute("href"));
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
 
-            if (target) {
-                e.preventDefault();
-
-                target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-
-                // Close mobile navbar
-                const navbar = document.querySelector(".navbar-collapse");
-
-                if (navbar.classList.contains("show")) {
-                    const bsCollapse = bootstrap.Collapse.getInstance(navbar);
-                    if (bsCollapse) {
-                        bsCollapse.hide();
-                    }
-                }
-            }
-        });
-    });
 </script>
+
 
 </body>
 </html>
